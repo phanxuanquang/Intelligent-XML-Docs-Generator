@@ -71,7 +71,7 @@ namespace Intelligent_XML_Docs_Generator
                         return;
                     }
 
-                    var instruction = await FileReader.GetPromptContentAsync();
+                    var instruction = await ContentReader.GetPromptContentAsync();
                     try
                     {
                         var xmlDocs = await Generator.GenerateContent("", instruction, $"## C# Code Snipet\n\n```code\n{selectedCode}\n```\n\n## Language for the XML documentation:\n\n- {LanguageSettings.CurrentLanguage}", 20);

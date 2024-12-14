@@ -4,12 +4,18 @@ using System.Threading.Tasks;
 
 namespace Intelligent_XML_Docs_Generator.Helpers
 {
-    public static class FileReader
+    public static class ContentReader
     {
-        private static readonly string SystemInstructionUrl = "SystemInstruction.txt";
+        private static readonly string SystemInstructionUrl = @"https://raw.githubusercontent.com/phanxuanquang/Intelligent-XML-Docs-Generator/refs/heads/master/Intelligent%20XML%20Docs%20Generator/SystemInstruction.md";
+        private static string _systemInstructionContent = string.Empty;
 
         public static async Task<string> GetPromptContentAsync()
         {
+            if (!string.IsNullOrWhiteSpace(_systemInstructionContent))
+            {
+                return _systemInstructionContent;
+            }
+
             using (HttpClient httpClient = new HttpClient())
             {
                 try
@@ -18,7 +24,8 @@ namespace Intelligent_XML_Docs_Generator.Helpers
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return await response.Content.ReadAsStringAsync();
+                        _systemInstructionContent = await response.Content.ReadAsStringAsync();
+                        return _systemInstructionContent;
                     }
                     else
                     {

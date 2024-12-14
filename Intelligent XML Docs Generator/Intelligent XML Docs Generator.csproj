@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Helpers\CodeInsertor.cs" />
     <Compile Include="Helpers\CodeSelector.cs" />
-    <Compile Include="Helpers\FileReader.cs" />
+    <Compile Include="Helpers\ContentReader.cs" />
     <Compile Include="IntelligentDocsCommand.cs" />
     <Compile Include="LanguageSelector.cs">
       <SubType>Form</SubType>
@@ -89,10 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\FirstCommand.png" />
-    <Content Include="SystemInstruction.txt">
+    <None Include="SystemInstruction.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LanguageSelector.resx">
