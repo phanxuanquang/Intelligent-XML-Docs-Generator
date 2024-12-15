@@ -90,7 +90,7 @@ namespace Intelligent_XML_Docs_Generator
                     {
                         VsShellUtilities.ShowMessageBox(
                             package,
-                            $"An error occurred while generating XML documentation: {ex.Message}",
+                            ex.Message,
                             "Intelligent XML Docs Generator",
                             OLEMSGICON.OLEMSGICON_CRITICAL,
                             OLEMSGBUTTON.OLEMSGBUTTON_OK,
@@ -101,7 +101,7 @@ namespace Intelligent_XML_Docs_Generator
                 {
                     VsShellUtilities.ShowMessageBox(
                         package,
-                        "This feature is only available for C# files.",
+                        "This feature is only available for C# language.",
                         "Invalid File Type",
                         OLEMSGICON.OLEMSGICON_WARNING,
                         OLEMSGBUTTON.OLEMSGBUTTON_OK,

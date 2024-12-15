@@ -11,7 +11,7 @@ namespace Intelligent_XML_Docs_Generator.Helpers
 
         public static async Task<string> GetPromptContentAsync()
         {
-            if (!string.IsNullOrWhiteSpace(_systemInstructionContent))
+            if (!string.IsNullOrEmpty(_systemInstructionContent))
             {
                 return _systemInstructionContent;
             }

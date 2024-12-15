@@ -1,48 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <Extern href="stdidcmd.h"/>
-  <Extern href="vsshlids.h"/>
-  <Commands package="guidIntelligent_XML_Docs_GeneratorPackage">
-    <Groups>
-      <Group guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligentXmlDocsGenerator" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
-      </Group>
-    </Groups>
-    <Buttons>
-      <Button guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="GenerateXmlDocsCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligentXmlDocsGenerator" />
-        <Icon guid="guidImages" id="bmpPic1" />
-        <Strings>
-          <ButtonText>Generate XML Documentation</ButtonText>
-        </Strings>
-      </Button>
-		<Button guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="ChooseLanguageCommandId" priority="0x0100" type="Button">
-			<Parent guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligentXmlDocsGenerator" />
-			<Icon guid="guidImages" id="bmpPic1" />
-			<Strings>
-				<ButtonText>Choose Language</ButtonText>
-			</Strings>
-		</Button>
-    </Buttons>
-    <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\FirstCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
-    </Bitmaps>
-  </Commands>
-  <Symbols>
-    <GuidSymbol name="guidIntelligent_XML_Docs_GeneratorPackage" value="{e8d7cf70-56d1-4089-8780-7ec87d3a22ff}" />
-    <GuidSymbol name="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" value="{0934180d-f5cc-4410-99bd-d87b357c5253}">
-      <IDSymbol name="IntelligentXmlDocsGenerator" value="0x1020" />
-      <IDSymbol name="GenerateXmlDocsCommandId" value="0x0100" />
-		<IDSymbol name="ChooseLanguageCommandId" value="0x0200" />
-    </GuidSymbol>
+	<Extern href="stdidcmd.h" />
+	<Extern href="vsshlids.h" />
+	<Commands package="guidIntelligent_XML_Docs_GeneratorPackage">
+		<Menus>
+			<Menu guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligenceXmlDocsMenu" priority="0x0600" type="Menu">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_OTHER2" />
+				<Icon guid="guidXmlDocMenuIcon" id="bmpXmlDocMenu" />
+				<Strings>
+					<ButtonText>Intelligence XML Documentation for C#</ButtonText>
+				</Strings>
+			</Menu>
+		</Menus>
 
-    <GuidSymbol name="guidImages" value="{be36bffc-72ff-411e-964c-76209c019fe7}" >
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
-    </GuidSymbol>
-  </Symbols>
+		<Groups>
+			<Group guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligentXmlDocsGenerator" priority="0x0600">
+				<Parent guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligenceXmlDocsMenu" />
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<Button guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="GenerateXmlDocsCommandId" priority="0x0100" type="Button">
+				<Parent guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligentXmlDocsGenerator" />
+				<Icon guid="guidGenerateDocIcon" id="bmpGenerateDoc" />
+				<Strings>
+					<ButtonText>Generate Documentation</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="ChooseLanguageCommandId" priority="0x0100" type="Button">
+				<Parent guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="IntelligentXmlDocsGenerator" />
+				<Icon guid="guidSettingsIcon" id="bmpSettings" />
+				<Strings>
+					<ButtonText>Settings</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+
+		<Bitmaps>
+			<Bitmap guid="guidGenerateDocIcon" href="Resources\Generate Documentation.bmp" usedList="bmpGenerateDoc" />
+			<Bitmap guid="guidSettingsIcon" href="Resources\Settings.bmp" usedList="bmpSettings" />
+			<Bitmap guid="guidXmlDocMenuIcon" href="Resources\Intelligence XML Documentation.bmp" usedList="bmpXmlDocMenu" />
+		</Bitmaps>
+	</Commands>
+
+	<KeyBindings>
+		<KeyBinding guid="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" id="GenerateXmlDocsCommandId"
+			editor="guidVSStd97" key1="D" mod1="Alt" mod2="Shift"/>
+	</KeyBindings>
+
+	<Symbols>
+		<GuidSymbol name="guidIntelligent_XML_Docs_GeneratorPackage" value="{e8d7cf70-56d1-4089-8780-7ec87d3a22ff}" />
+		<GuidSymbol name="guidIntelligent_XML_Docs_GeneratorPackageCmdSet" value="{0934180d-f5cc-4410-99bd-d87b357c5253}">
+			<IDSymbol name="IntelligenceXmlDocsMenu" value="0x1021" />
+			<IDSymbol name="IntelligentXmlDocsGenerator" value="0x1020" />
+			<IDSymbol name="GenerateXmlDocsCommandId" value="0x0100" />
+			<IDSymbol name="ChooseLanguageCommandId" value="0x0200" />
+			<IDSymbol value="4130" name="cmdidToolWindow1Command" />
+		</GuidSymbol>
+
+		<GuidSymbol name="guidGenerateDocIcon" value="{d3c81e3b-d9e1-487e-8c5a-9f3bbf2fa4c9}">
+			<IDSymbol name="bmpGenerateDoc" value="1" />
+		</GuidSymbol>
+
+		<GuidSymbol name="guidSettingsIcon" value="{ee97b27f-2a9f-4c73-9b0b-58350d5a4a6d}">
+			<IDSymbol name="bmpSettings" value="1" />
+		</GuidSymbol>
+
+		<GuidSymbol name="guidXmlDocMenuIcon" value="{ec2a6f3d-b0db-4c69-b97a-b8f23d8e4a7d}">
+			<IDSymbol name="bmpXmlDocMenu" value="1" />
+		</GuidSymbol>
+	</Symbols>
 </CommandTable>

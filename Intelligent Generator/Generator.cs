@@ -16,6 +16,11 @@ namespace Intelligent_Generator
 
         public static async Task<string> GenerateContent(string apiKey, string instruction, string query, sbyte creativity)
         {
+            if(!CanBeGeminiApiKey(apiKey))
+            {
+                throw new AccessViolationException("Invalid Gemini API Key");
+            }
+
             var modelName = "gemini-2.0-flash-exp";
             var endpoint = $"https://generativelanguage.googleapis.com/v1beta/models/{modelName}:generateContent?key={apiKey}";
 
@@ -76,14 +81,21 @@ namespace Intelligent_Generator
                 }
             };
 
-            var body = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync(endpoint, body).ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
+            try
+            {
+                var body = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
+                var response = await _client.PostAsync(endpoint, body).ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
 
-            var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var responseDTO = JsonConvert.DeserializeObject<ApiResponseDto.Response>(responseData);
+                var responseData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var responseDTO = JsonConvert.DeserializeObject<ApiResponseDto.Response>(responseData);
 
-            return responseDTO.Candidates[0].Content.Parts[0].Text;
+                return responseDTO.Candidates[0].Content.Parts[0].Text;
+            }
+            catch (Exception ex)
+            {
+                throw new OperationCanceledException("Error while generating content.", ex);
+            }
         }
 
         public static bool CanBeGeminiApiKey(string apiKey)
